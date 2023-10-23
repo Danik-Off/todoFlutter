@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:provider/provider.dart';
+import 'package:todo_flutter/screens/new_task_screen.dart';
 import '../providers/app_state.dart';
 import '../widgets/filter_task_list.dart';
 import 'package:todo_flutter/widgets/my_app_bar.dart';
@@ -28,7 +29,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => setState(()=>{}),
+        onPressed: () => setState(()=>{
+           Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => NewTaskScreen()),
+            )
+        }),
         tooltip: 'Increment Counter',
         child: const Icon(Icons.add),
       ), 

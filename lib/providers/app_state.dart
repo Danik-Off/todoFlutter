@@ -22,6 +22,7 @@ void loadArray() async {
   if (encodedArray != null) {
     final decodedArray = json.decode(encodedArray);
     tasks = List<Task>.from(decodedArray.map((json) => Task.fromJson(json)));
+     notifyListeners();
   } else {
     print('Array is not set.');
   }
