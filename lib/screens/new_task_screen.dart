@@ -31,7 +31,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
             ElevatedButton(
               onPressed: () {
                 final textData =
-                    _textController.text.trim(); //  Убираем лишние пробелы
+                    _textController.text.trim();
                 if (textData.isNotEmpty) {
                   taskProvider.addTask(textData);
                   Navigator.of(context).pop();
