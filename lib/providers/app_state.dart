@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:todo_flutter/models/task.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import "dart:convert";
+import 'package:uuid/data.dart';
+import 'package:uuid/uuid.dart';
+import 'package:uuid/rng.dart';
 
 class AppState with ChangeNotifier {
   List<Task> tasks = [
@@ -48,13 +51,15 @@ void loadArray() async {
     notifyListeners();
   }
 
+
   void addTask(String text) {
-    tasks.add(Task(id: tasks.length + 1, text: text, done: false));
+    var uuid = Uuid();
+    tasks.add(Task(id: uuid.v1(), text: text, done: false));
     notifyListeners();
     saveArray(tasks);
   }
 
-  void setStatus(int id, bool status) {
+  void setStatus(String id, bool status) {
     final taskIndex = tasks.indexWhere((task) => task.id == id);
     if (taskIndex != -1) {
       tasks[taskIndex].done = status;
@@ -63,7 +68,7 @@ void loadArray() async {
     }
   }
 
-  void removeTask(int id) {
+  void removeTask(String id) {
     tasks.removeWhere((task) => task.id == id);
     notifyListeners();
     saveArray(tasks);

@@ -1,7 +1,7 @@
 class Task{
- int id;
- late String text;
- late bool done;
+ String id;
+ String text;
+ bool done;
  
   Task({required this.text,required this.id, required this.done});
   Map<String, dynamic> toJson() {
@@ -12,7 +12,6 @@ class Task{
     };
   }
 
-  // Фабричный метод для создания объекта Task из JSON
   factory Task.fromJson(Map<String, dynamic> json) {
     return Task(
       id: json['id'],
